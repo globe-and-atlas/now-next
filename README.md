@@ -1,28 +1,20 @@
-# now-next
+# Now / Next
 
-Scaffolded from `project-template` using the `workflow-python` profile.
+A Pebble Time 2 face with a large clock and one changing context field. Morning, daytime, evening, and night each have a configurable start hour and field choice: rain chance, temperature, sunset, or watch battery. The footer previews the next field and its start time.
 
-## Project Profile
+Settings provide independent background, digit, and accent colors. The date can be hidden or shown as YYYY-MM-DD, MM/DD/YYYY, or DD/MM/YYYY. The clock follows the watch's 12/24-hour setting.
 
-- `profile`: `workflow-python`
-- `deploy`: `local-only`
-- `runtime`: `pebble`
-- `loop_mode`: `data`
-- `knowledge_level`: `heavy`
+Weather comes from Open-Meteo through the phone and refreshes every 30 minutes. If location, network, or valid data is unavailable, the affected field displays `UNAVAILABLE`. Weather values expire after one hour.
 
-## Workshop Standard
+## Build
 
-This project follows the 3-layer architecture:
-
-```text
-directives/     Layer 1 — What to do
-agent           Layer 2 — Decide → Delegate → Verify
-execution/      Layer 3 — Deterministic execution (when this profile uses it)
+```bash
+cd /Users/danielbally/Git/now-next/watchface
+npm ci
+cd /Users/danielbally/Git/now-next
+python3 execution/verify_watchface.py
 ```
 
-## Next Steps
+The build artifact is `watchface/build/watchface.pbw`. To inspect it in the emulator, install with `pebble install --emulator emery watchface/build/watchface.pbw` from the project root and take a screenshot with `pebble screenshot --emulator emery --no-open`.
 
-1. Fill in the actual project description here.
-2. Update `task.md` with the first real milestone.
-3. Populate `knowledge/context.md`.
-4. Draft the first workflow directive in `directives/`.
+See `directives/build_watchface.md` for the validation contract and `knowledge/procedural/build_and_check.md` for capture behavior.

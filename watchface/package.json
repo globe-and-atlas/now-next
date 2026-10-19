@@ -1,0 +1,24 @@
+{
+  "name": "now-next",
+  "author": "Daniel Bally",
+  "version": "0.1.0",
+  "private": true,
+  "keywords": ["pebble-app"],
+  "pebble": {
+    "displayName": "Now / Next",
+    "uuid": "4d8169ae-0f18-44d2-8c6b-65d98f2151c4",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": ["emery"],
+    "watchapp": {"watchface": true},
+    "capabilities": ["configurable", "location"],
+    "messageKeys": [
+      "SETTING_BG", "SETTING_DIGITS", "SETTING_ACCENT", "SETTING_DATE",
+      "SETTING_START_0", "SETTING_START_1", "SETTING_START_2", "SETTING_START_3",
+      "SETTING_FIELD_0", "SETTING_FIELD_1", "SETTING_FIELD_2", "SETTING_FIELD_3",
+      "WEATHER_VALID", "WEATHER_TEMP", "WEATHER_RAIN", "WEATHER_SUNSET"
+    ],
+    "resources": {"media": []}
+  },
+  "dependencies": {"@rebble/clay": "1.1.0"}
+}

@@ -9,12 +9,15 @@
 
 ## Purpose
 
-Describe who this project serves and what use, purpose, or beauty it should deliver.
+A glanceable Pebble Time 2 clock that shows one context value selected by the current daily period.
 
 ## Constraints
 
-- Add real constraints here
+- Native Emery resolution is 200×228, with a 64-color e-paper display.
+- Weather requires phone location and network access; unavailable data stays visibly unavailable.
+- Date controls follow the workspace Off / ISO / MDY / DMY convention.
 
 ## Out of Scope
 
-- Add out-of-scope boundaries here
+- This first build does not use Garmin proprietary health metrics.
+- Physical watch behavior and RePebble release are separate from the Emery emulator build.
