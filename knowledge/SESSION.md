@@ -6,21 +6,18 @@
 - Handoff-from: OpenAI Codex
 - Handoff-type: continuation
 - Goal: Publish Now / Next to RePebble with a GIF-first color-varied preview.
-- Status: Published; public listing, animated search card, and PBW verified.
-- Checkpoint: 2026-10-18 22:23 — Read publication guidance and prepared the release contract.
-- Checkpoint: 2026-10-18 22:34 — Added deterministic native media captures, six color/date scenes, listing assembly and publish validation; production PBW verification passed. Concurrent Pocket Familiar emulator activity displaced Now / Next during screenshot capture. Preserved original emulator state in `.tmp/emery-original-session`.
-- Checkpoint: 2026-10-18 22:40 — Captured six complete native Emery frames with six distinct backgrounds and all date choices; assembled 9,988-byte animated GIF first plus four PNGs; restored prior emulator state. Production PBW and listing dry-run passed.
-- Checkpoint: 2026-10-18 22:43 — Fresh verifier approved local release; RePebble published Now / Next 0.1.0 at `https://apps.repebble.com/68afcbcc6c18416c98b6a1b7`. Public search card animated; public PBW matched production binary and JS.
+- Status: Complete; session checkpoints promoted to permanent knowledge.
 
 ## Last Known State
 
 - Agent: OpenAI Codex (GPT-6.1-sol)
 - Handoff-from: OpenAI Codex
 - Handoff-type: continuation
-- Goal: Simplify the battery heading in Now / Next.
-- Status: Complete locally; Emery shows NIGHT above 100% without the redundant battery label.
-- Artifact: `watchface/build/watchface.pbw` from `python3 execution/verify_watchface.py`.
-- Verification: `python3 execution/verify_watchface.py` passed; native Emery capture at `.tmp/night-battery-simple.png` shows the revised heading.
-- Current UI commit: `206b5a2`.
-- Scope left: physical Time 2 installation and RePebble publication were outside this build request.
-- Next: use `directives/build_watchface.md` and `knowledge/procedural/build_and_check.md` when continuing.
+- Goal: Publish Now / Next to RePebble with a GIF-first color-varied preview.
+- Status: Public release live at https://apps.repebble.com/68afcbcc6c18416c98b6a1b7.
+- Artifact: watchface/build/watchface.pbw (Now / Next 0.1.0, Emery, UUID 4d8169ae-0f18-44d2-8c6b-65d98f2151c4).
+- Media: listing/emery_00_preview.gif first; six native frames with six backgrounds, four periods, and four date choices.
+- Verification: fresh verifier approved; public search card animated; public PBW binary and JS matched local production; python3 execution/verify_watchface.py passed.
+- Release commit: 780ccc7.
+- Scope left: physical Pebble Time 2 installation has not been observed.
+- Next: use directives/publish_watchface.md and knowledge/procedural/publish_watchface.md for future releases.
