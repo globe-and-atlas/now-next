@@ -17,3 +17,9 @@
 - Decision: use phone location and Open-Meteo for rain chance, temperature, and sunset, with a one-hour freshness limit.
 - Alternatives considered: Garmin data fields; weather-free first build.
 - Reason: the selected example fields need weather, while Garmin-only metrics cannot transfer to Pebble.
+
+## 2026-10-18 — Store media fixture
+
+- Decision: compile deterministic clock and weather sample values behind `NN_MEDIA_FIXTURE` for native Emery listing captures, then rebuild the production PBW without the define.
+- Alternatives considered: compositing a mock watch screen; waiting for real weather and clock hours.
+- Reason: store frames should come from the native renderer while displaying every period and date option repeatably.

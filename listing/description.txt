@@ -1,0 +1,5 @@
+Now / Next is a glanceable Pebble Time 2 watchface with a large clock and one useful detail at a time. It changes that detail across four configurable daily periods: morning, daytime, evening, and night. Set each period's start hour and choose rain chance, current temperature, today's sunset, or watch battery. The footer names the next detail and when it begins.
+
+Choose background, clock digit, and accent colors independently. Show no date or choose YYYY-MM-DD, MM/DD/YYYY, or DD/MM/YYYY. The clock follows your watch's 12/24-hour setting.
+
+Weather comes from Open-Meteo using the connected phone's location, refreshes every 30 minutes, and appears as UNAVAILABLE when data is missing or stale. Temperature is shown in Fahrenheit. Compatible with Pebble Time 2 (Emery).

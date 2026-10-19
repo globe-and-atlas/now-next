@@ -50,3 +50,48 @@ timestamp: "2026-10-18T21:55:45-05:00"
 - [x] A rain percentage retains its rain-chance label.
 - [x] `python3 execution/verify_watchface.py` passes after the edit.
 - [x] The Emery preview shows the simplified night heading.
+
+## 2026-10-18 — RePebble publication
+
+### Contract
+- Target directive: `directives/publish_watchface.md`.
+- Intended execution scripts: `execution/capture_listing.py`, `execution/prepare_listing.py`, `execution/publish_release.py`, `execution/verify_public_release.py`.
+- Expected local artifacts: `listing/` media and text, production `watchface/build/watchface.pbw`.
+- Expected external artifact: public RePebble watchface listing.
+- Safety: keep `.env`, tokens, waf locks, and `.tmp/` out of Git.
+
+### Validation Contract
+- [x] The production PBW targets Emery.
+- [x] The production PBW has the Now / Next UUID.
+- [x] The first uploaded Emery screenshot is an animated GIF.
+- [x] The GIF has six distinct native 200×228 frames.
+- [x] The GIF shows morning.
+- [x] The GIF shows daytime.
+- [x] The GIF shows evening.
+- [x] The GIF shows night.
+- [x] The GIF shows four distinct background colors.
+- [x] The GIF shows the Off date choice.
+- [x] The GIF shows YYYY-MM-DD.
+- [x] The GIF shows MM/DD/YYYY.
+- [x] The GIF shows DD/MM/YYYY.
+- [x] No uploaded screenshot exceeds 4.4 MB.
+- [x] The uploaded screenshots use a production-equivalent watchface rendering path.
+- [x] The published description matches the implemented controls.
+- [x] The public listing serves the current PBW.
+- [x] The public listing displays the GIF first.
+- [x] The public search card uses the GIF preview.
+- [x] A fresh verifier reviews the release artifacts.
+
+### Progress
+- [x] Capture native Emery variants.
+- [x] Assemble and validate listing media.
+- [x] Publish the watchface.
+- [x] Verify the public listing.
+
+### Release evidence
+
+- Public listing: https://apps.repebble.com/68afcbcc6c18416c98b6a1b7
+- Public search: https://apps.repebble.com/search?query=Now%20%2F%20Next&type=faces&page=1
+- Public PBW: downloaded and matched production `emery/pebble-app.bin` and `pebble-js-app.js` by SHA-256 with `execution/verify_public_release.py`.
+- RePebble listed five Emery screenshots; the first asset is a GIF. The search card visibly advanced from evening green to daytime blue during browser review.
+- Physical Pebble Time 2 installation remains untested.

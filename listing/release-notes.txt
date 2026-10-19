@@ -1,0 +1,1 @@
+Initial Pebble Time 2 release: four configurable daily periods, selectable context fields, independent colors, and four date choices. The animated preview shows the period, field, date, and color options using example weather values.

@@ -19,9 +19,15 @@ static int s_accent = 0x6FD6C0;
 static int s_date = 1;
 static int s_starts[4] = {6, 11, 17, 21};
 static int s_fields[4] = {0, 1, 2, 3};
+#ifdef NN_MEDIA_FIXTURE
+static int s_temperature = 72;
+static int s_rain = 35;
+static int s_sunset = 1111;
+#else
 static int s_temperature;
 static int s_rain;
 static int s_sunset;
+#endif
 static time_t s_weather_at;
 static const char *s_periods[4] = {"MORNING", "DAYTIME", "EVENING", "NIGHT"};
 static uint32_t start_key(int index) {
@@ -51,26 +57,48 @@ static void label(GContext *ctx, const char *value, const char *font,
 }
 
 static bool weather_fresh(time_t now) {
+#ifdef NN_MEDIA_FIXTURE
+  (void)now;
+  return true;
+#else
   return s_weather_at && now >= s_weather_at &&
          now - s_weather_at <= WEATHER_STALE_SECONDS;
+#endif
 }
 
 static void context_text(int field, time_t now, char *value, size_t size) {
+#ifdef NN_MEDIA_FIXTURE
+  (void)now;
+#endif
   if (field == 3) {
     snprintf(value, size, "%d%%", battery_state_service_peek().charge_percent);
   } else if (!weather_fresh(now)) {
     snprintf(value, size, "UNAVAILABLE");
   } else if (field == 0) {
+#ifdef NN_MEDIA_FIXTURE
+    snprintf(value, size, "35%%");
+#else
     snprintf(value, size, "%d%%", s_rain);
+#endif
   } else if (field == 1) {
+#ifdef NN_MEDIA_FIXTURE
+    snprintf(value, size, "72F");
+#else
     snprintf(value, size, "%dF", s_temperature);
+#endif
   } else {
+#ifdef NN_MEDIA_FIXTURE
+    int hour = 18;
+    int minute = 31;
+#else
     int hour = s_sunset / 60;
+    int minute = s_sunset % 60;
+#endif
     if (clock_is_24h_style())
-      snprintf(value, size, "%02d:%02d", hour, s_sunset % 60);
+      snprintf(value, size, "%02d:%02d", hour, minute);
     else
       snprintf(value, size, "%d:%02d%s", (hour % 12) ? hour % 12 : 12,
-               s_sunset % 60, hour < 12 ? "A" : "P");
+               minute, hour < 12 ? "A" : "P");
   }
 }
 
@@ -96,6 +124,12 @@ static void draw(Layer *layer, GContext *ctx) {
 
   time_t now = time(NULL);
   struct tm *local = localtime(&now);
+#ifdef NN_MEDIA_FIXTURE
+  struct tm media_time = *local;
+  media_time.tm_hour = NN_MEDIA_HOUR;
+  media_time.tm_min = NN_MEDIA_MINUTE;
+  local = &media_time;
+#endif
   char clock_text[12];
   strftime(clock_text, sizeof(clock_text), clock_is_24h_style() ? "%H:%M" : "%I:%M", local);
   if (!clock_is_24h_style() && clock_text[0] == '0')
