@@ -9,5 +9,6 @@
 - Status: Complete locally; the fresh verifier approved the Emery build and native preview.
 - Artifact: `watchface/build/watchface.pbw` from `python3 execution/verify_watchface.py`.
 - Verification: `npm ci`, `python3 execution/verify_watchface.py`, project health check, native Emery default/custom/date/weather captures.
+- Source commits: `d47ce76` and `31ba489`.
 - Scope left: physical Time 2 installation and RePebble publication were outside this build request.
 - Next: use `directives/build_watchface.md` and `knowledge/procedural/build_and_check.md` when continuing.
