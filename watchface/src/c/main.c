@@ -75,7 +75,7 @@ static void context_text(int field, time_t now, char *value, size_t size) {
 }
 
 static const char *field_name(int field) {
-  static const char *names[4] = {"RAIN CHANCE", "TEMPERATURE", "SUNSET", "WATCH BATTERY"};
+  static const char *names[4] = {"RAIN CHANCE", "TEMPERATURE", "SUNSET", "BATTERY"};
   return names[field >= 0 && field <= 3 ? field : 3];
 }
 
@@ -116,7 +116,10 @@ static void draw(Layer *layer, GContext *ctx) {
   int period = nn_period_for_hour(local->tm_hour, s_starts);
   if (period < 0) period = 3;
   char heading[40];
-  snprintf(heading, sizeof(heading), "%s  /  %s", s_periods[period], field_name(s_fields[period]));
+  if (s_fields[period] == 3)
+    snprintf(heading, sizeof(heading), "%s", s_periods[period]);
+  else
+    snprintf(heading, sizeof(heading), "%s  /  %s", s_periods[period], field_name(s_fields[period]));
   label(ctx, heading, FONT_KEY_GOTHIC_14_BOLD, GRect(12, 144, 176, 23),
         accent, GTextAlignmentCenter);
   char value[32];

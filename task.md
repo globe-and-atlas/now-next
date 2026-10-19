@@ -43,3 +43,10 @@ timestamp: "2026-10-18T21:55:45-05:00"
 - `python3 execution/verify_watchface.py` passed after the final source change.
 - Native Emery captures confirmed default color, a custom color choice, all date orders, and weather fixture delivery.
 - Fresh verifier approved the source, PBW, and 200×228 preview.
+
+## 2026-10-18 — Battery heading simplification
+
+- [x] A battery field shows only its period name above the percentage.
+- [x] A rain percentage retains its rain-chance label.
+- [x] `python3 execution/verify_watchface.py` passes after the edit.
+- [x] The Emery preview shows the simplified night heading.
